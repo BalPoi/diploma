@@ -4,3 +4,5 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+  liquibase:
+    change-log: "classpath:db/changelog/db.changelog-master.xml"
