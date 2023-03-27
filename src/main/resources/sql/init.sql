@@ -1,4 +1,4 @@
-CREATE TYPE status AS ENUM ( 'INECTIVE', 'ENGAGED' , 'FREE' , 'BOOKED'  );
+CREATE TYPE status AS ENUM ( 'INACTIVE', 'ENGAGED' , 'FREE' , 'BOOKED'  );
 
 CREATE  TABLE countries ( 
 	id                   integer  NOT NULL GENERATED ALWAYS AS IDENTITY  ,
@@ -10,11 +10,10 @@ CREATE  TABLE users (
 	id                   bigint  NOT NULL GENERATED ALWAYS AS IDENTITY  ,
 	first_name           varchar(100)    ,
 	last_name            varchar(100)    ,
-	acitve               boolean  NOT NULL  ,
-	phone_number         varchar    ,
+	active               boolean  NOT NULL  ,
 	email                varchar    ,
-	nickname             varchar(100)    ,
-	"role"               varchar  NOT NULL  ,
+	password             varchar(100)    ,
+	"role"               varchar(64)  NOT NULL  ,
 	CONSTRAINT pk_users PRIMARY KEY ( id )
  );
 
@@ -44,7 +43,7 @@ CREATE  TABLE parking_stations (
 
 CREATE  TABLE scooter_models ( 
 	id                   integer  NOT NULL GENERATED ALWAYS AS IDENTITY  ,
-	model                varchar(100)  NOT NULL  ,
+	name                varchar(100)  NOT NULL  ,
 	vendor_id            integer  NOT NULL  ,
 	max_speed            real    ,
 	CONSTRAINT pk_scooter_models PRIMARY KEY ( id ),
@@ -54,7 +53,7 @@ CREATE  TABLE scooter_models (
 CREATE  TABLE scooters ( 
 	id                   integer  NOT NULL GENERATED ALWAYS AS IDENTITY  ,
 	serial_number        varchar(100)  NOT NULL  ,
-	status               varchar(50)  NOT NULL  ,
+	status               varchar(16)  NOT NULL  ,
 	charge_percentage    integer  NOT NULL  ,
 	model_id             integer  NOT NULL  ,
 	CONSTRAINT pk_scooters PRIMARY KEY ( id ),
@@ -75,4 +74,3 @@ CREATE  TABLE rental_sessions (
 	CONSTRAINT fk_rental_sessions_parking_stations FOREIGN KEY ( begin_station_id ) REFERENCES parking_stations( id )   ,
 	CONSTRAINT fk_rental_sessions_parking_stations_0 FOREIGN KEY ( end_station_id ) REFERENCES parking_stations( id )   
  );
-

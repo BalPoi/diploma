@@ -6,3 +6,12 @@ spring:
     password: ${DB_PASSWORD}
   liquibase:
     change-log: "classpath:db/changelog/db.changelog-master.xml"
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
