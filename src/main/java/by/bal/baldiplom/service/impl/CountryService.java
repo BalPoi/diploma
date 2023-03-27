@@ -3,6 +3,7 @@ package by.bal.baldiplom.service.impl;
 import by.bal.baldiplom.dto.ReadCountryDto;
 import by.bal.baldiplom.dto.WriteCountryDto;
 import by.bal.baldiplom.enity.Country;
+import by.bal.baldiplom.exception.ResourceNotFoundException;
 import by.bal.baldiplom.repository.CountryRepository;
 import by.bal.baldiplom.service.ICountryService;
 import org.modelmapper.ModelMapper;
@@ -32,13 +33,13 @@ public class CountryService implements ICountryService {
 
     @Override
     public ReadCountryDto getCountryById(int id) {
-        Country country = countryRepository.findById(id).orElseThrow(RuntimeException::new); //TODO: EXCEPTIONS HANDLING
+        Country country = countryRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
         return mapper.map(country, ReadCountryDto.class);
     }
 
     @Override
     public void editCountryById(int id, WriteCountryDto countryDto) {
-        Country country = countryRepository.findById(id).orElseThrow(RuntimeException::new); //TODO: EXCEPTIONS HANDLING
+        Country country = countryRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
         country.setName(countryDto.getName());
         countryRepository.save(country);
     }
