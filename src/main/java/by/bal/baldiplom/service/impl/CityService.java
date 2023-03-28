@@ -5,6 +5,7 @@ import by.bal.baldiplom.dto.WriteCityDto;
 import by.bal.baldiplom.enity.City;
 import by.bal.baldiplom.exception.ResourceNotFoundException;
 import by.bal.baldiplom.repository.CityRepository;
+import by.bal.baldiplom.repository.CountryRepository;
 import by.bal.baldiplom.service.ICityService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,13 @@ import java.util.stream.Collectors;
 @Service
 public class CityService implements ICityService {
     private final CityRepository cityRepository;
+    private final CountryRepository countryRepository;
     private final ModelMapper mapper;
 
     @Autowired
-    public CityService(CityRepository cityRepository, ModelMapper mapper) {
+    public CityService(CityRepository cityRepository, CountryRepository countryRepository, ModelMapper mapper) {
         this.cityRepository = cityRepository;
+        this.countryRepository = countryRepository;
         this.mapper = mapper;
     }
 
@@ -51,7 +54,11 @@ public class CityService implements ICityService {
 
     @Override
     public int addCity(WriteCityDto cityDto) {
-        City newCity = mapper.map(cityDto, City.class);
+        City newCity = new City();
+        newCity.setName(cityDto.getName());
+        newCity.setCountry(
+                countryRepository.findById(cityDto.getCountryId()).orElseThrow(ResourceNotFoundException::new)
+        );
         return cityRepository.saveAndFlush(newCity).getId();
     }
 }
