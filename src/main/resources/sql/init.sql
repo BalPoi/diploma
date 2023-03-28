@@ -77,3 +77,15 @@ CREATE  TABLE rental_sessions (
 	CONSTRAINT fk_rental_sessions_parking_stations FOREIGN KEY ( begin_station_id ) REFERENCES parking_stations( id )   ,
 	CONSTRAINT fk_rental_sessions_parking_stations_0 FOREIGN KEY ( end_station_id ) REFERENCES parking_stations( id )   
  );
+
+--changeset pbal:202303281149
+INSERT INTO public.vendors (name) VALUES ('Samokat.RU');
+INSERT INTO public.vendors (name) VALUES ('Samokatka.by');
+
+INSERT INTO public.countries (name) VALUES ('Belarus');
+INSERT INTO public.countries (name) VALUES ('Russia');
+
+INSERT INTO public.cities (name, country_id) VALUES ('Gomel', 1);
+INSERT INTO public.cities (name, country_id) VALUES ('Vitebsk', 1);
+INSERT INTO public.cities (name, country_id) VALUES ('Moscow', 2);
+INSERT INTO public.cities (name, country_id) VALUES ('Petersburg', 2);
