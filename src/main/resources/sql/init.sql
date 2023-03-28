@@ -1,3 +1,6 @@
+-- liquibase formatted sql
+
+-- changeset pbal:202303281113
 CREATE TYPE status AS ENUM ( 'INACTIVE', 'ENGAGED' , 'FREE' , 'BOOKED'  );
 
 CREATE  TABLE countries ( 
@@ -61,7 +64,7 @@ CREATE  TABLE scooters (
  );
 
 CREATE  TABLE rental_sessions ( 
-	id                   integer  NOT NULL GENERATED ALWAYS AS IDENTITY  ,
+	id                   bigint  NOT NULL GENERATED ALWAYS AS IDENTITY  ,
 	user_id              bigint  NOT NULL  ,
 	scooter_id           integer  NOT NULL  ,
 	begin_time           timestamp  NOT NULL  ,
