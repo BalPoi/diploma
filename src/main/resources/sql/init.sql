@@ -1,8 +1,6 @@
 -- liquibase formatted sql
 
 -- changeset pbal:202303281113
-CREATE TYPE status AS ENUM ( 'INACTIVE', 'ENGAGED' , 'FREE' , 'BOOKED'  );
-
 CREATE  TABLE countries ( 
 	id                   integer  NOT NULL GENERATED ALWAYS AS IDENTITY  ,
 	name                 varchar(100)  NOT NULL  ,
@@ -48,7 +46,6 @@ CREATE  TABLE scooter_models (
 	id                   integer  NOT NULL GENERATED ALWAYS AS IDENTITY  ,
 	name                varchar(100)  NOT NULL  ,
 	vendor_id            integer  NOT NULL  ,
-	max_speed            real    ,
 	CONSTRAINT pk_scooter_models PRIMARY KEY ( id ),
 	CONSTRAINT fk_scooter_models_vendors FOREIGN KEY ( vendor_id ) REFERENCES vendors( id )   
  );
