@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -25,7 +26,9 @@ public class Scooter {
     int id;
 
     String serialNumber;
-    int chargePercentage;
+    Integer chargePercentage;
+    BigDecimal latitude;
+    BigDecimal longitude;
 
     @ManyToOne
     @JoinColumn(name = "model_id")
@@ -33,11 +36,4 @@ public class Scooter {
 
     @Enumerated(EnumType.STRING)
     Status status;
-
-    private enum Status {
-        FREE,
-        BOOKED,
-        ENGAGED,
-        INACTIVE
-    }
 }
