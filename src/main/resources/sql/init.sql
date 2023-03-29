@@ -34,10 +34,12 @@ CREATE  TABLE cities (
 
 CREATE  TABLE parking_stations ( 
 	id                   integer  NOT NULL GENERATED ALWAYS AS IDENTITY  ,
-	address              varchar(100)  NOT NULL  ,
+	address              varchar(100)   ,
 	slots_number         integer  NOT NULL  ,
 	free_slots_number    integer  NOT NULL  ,
 	city_id              integer    ,
+	latitude             decimal(8, 6),
+	longitude            decimal(9, 6),
 	CONSTRAINT pk_parking_stations PRIMARY KEY ( id ),
 	CONSTRAINT fk_parking_stations_cities FOREIGN KEY ( city_id ) REFERENCES cities( id )   
  );
