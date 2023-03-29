@@ -54,8 +54,10 @@ CREATE  TABLE scooters (
 	id                   integer  NOT NULL GENERATED ALWAYS AS IDENTITY  ,
 	serial_number        varchar(100)  NOT NULL  ,
 	status               varchar(16)  NOT NULL  ,
-	charge_percentage    integer  NOT NULL  ,
+	charge_percentage    integer    ,
 	model_id             integer  NOT NULL  ,
+	latitude             decimal(8, 6),
+    longitude            decimal(9, 6),
 	CONSTRAINT pk_scooters PRIMARY KEY ( id ),
 	CONSTRAINT fk_scooters_scooter_models FOREIGN KEY ( model_id ) REFERENCES scooter_models( id )   
  );
