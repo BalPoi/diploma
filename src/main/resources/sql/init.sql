@@ -86,3 +86,21 @@ INSERT INTO public.cities (name, country_id) VALUES ('Gomel', 1);
 INSERT INTO public.cities (name, country_id) VALUES ('Vitebsk', 1);
 INSERT INTO public.cities (name, country_id) VALUES ('Moscow', 2);
 INSERT INTO public.cities (name, country_id) VALUES ('Petersburg', 2);
+
+--changeset pbal:202303291027
+INSERT INTO public.scooter_models (name, vendor_id) VALUES ('Malanka Mk1', 2);
+INSERT INTO public.scooter_models (name, vendor_id) VALUES ('Malanka Mk2', 2);
+INSERT INTO public.scooter_models (name, vendor_id) VALUES ('Volot', 1);
+INSERT INTO public.scooter_models (name, vendor_id) VALUES ('Listok', 1);
+
+--changeset pbal:202303291102
+INSERT INTO public.scooters (serial_number, status, charge_percentage, model_id, latitude, longitude) VALUES ('ABC130', 'INACTIVE', 67, 2, 13.123000, 320.123123);
+INSERT INTO public.scooters (serial_number, status, charge_percentage, model_id, latitude, longitude) VALUES ('ABC123', 'INACTIVE', null, 1, null, null);
+INSERT INTO public.scooters (serial_number, status, charge_percentage, model_id, latitude, longitude) VALUES ('ABC124', 'INACTIVE', null, 1, null, null);
+INSERT INTO public.scooters (serial_number, status, charge_percentage, model_id, latitude, longitude) VALUES ('ABC126', 'INACTIVE', null, 2, null, null);
+INSERT INTO public.scooters (serial_number, status, charge_percentage, model_id, latitude, longitude) VALUES ('ABC127', 'INACTIVE', null, 2, null, null);
+INSERT INTO public.scooters (serial_number, status, charge_percentage, model_id, latitude, longitude) VALUES ('ABC128', 'INACTIVE', null, 2, null, null);
+INSERT INTO public.scooters (serial_number, status, charge_percentage, model_id, latitude, longitude) VALUES ('ABC129', 'INACTIVE', null, 2, null, null);
+INSERT INTO public.scooters (serial_number, status, charge_percentage, model_id, latitude, longitude) VALUES ('ABC131', 'FREE', 88, 2, 20.132131, 120.123123);
+INSERT INTO public.scooters (serial_number, status, charge_percentage, model_id, latitude, longitude) VALUES ('ABC132', 'BOOKED', 88, 2, 20.132131, 120.123123);
+INSERT INTO public.scooters (serial_number, status, charge_percentage, model_id, latitude, longitude) VALUES ('ABC133', 'FREE', 99, 2, 20.132131, 120.123123);
