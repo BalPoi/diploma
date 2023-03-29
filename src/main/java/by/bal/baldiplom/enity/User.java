@@ -31,9 +31,4 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     Role role;
-
-    private enum Role {
-        CUSTOMER_ROLE,
-        ADMIN_ROLE
-    }
 }
