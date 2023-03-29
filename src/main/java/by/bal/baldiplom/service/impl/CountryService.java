@@ -46,7 +46,8 @@ public class CountryService implements ICountryService {
 
     @Override
     public void deleteCountryById(int id) {
-        countryRepository.deleteById(id);
+        if (countryRepository.existsById(id)) countryRepository.deleteById(id);
+        else throw new ResourceNotFoundException();
     }
 
     @Override

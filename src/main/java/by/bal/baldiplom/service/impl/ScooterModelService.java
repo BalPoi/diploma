@@ -62,6 +62,7 @@ public class ScooterModelService implements IScooterModelService {
 
     @Override
     public void deleteScooterModelById(int id) {
-        modelRepository.deleteById(id);
+        if (modelRepository.existsById(id)) modelRepository.deleteById(id);
+        else throw new ResourceNotFoundException();
     }
 }

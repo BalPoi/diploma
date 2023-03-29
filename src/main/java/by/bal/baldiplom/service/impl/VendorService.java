@@ -46,7 +46,8 @@ public class VendorService implements IVendorService {
 
     @Override
     public void deleteVendorById(int id) {
-        vendorRepository.deleteById(id);
+        if (vendorRepository.existsById(id)) vendorRepository.deleteById(id);
+        else throw new ResourceNotFoundException();
     }
 
     @Override

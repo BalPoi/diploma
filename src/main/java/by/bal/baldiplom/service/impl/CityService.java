@@ -49,7 +49,8 @@ public class CityService implements ICityService {
 
     @Override
     public void deleteCityById(int id) {
-        cityRepository.deleteById(id);
+        if (cityRepository.existsById(id)) cityRepository.deleteById(id);
+        else throw new ResourceNotFoundException();
     }
 
     @Override
